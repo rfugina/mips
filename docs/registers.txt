@@ -1,0 +1,34 @@
+
+0	zero	constant
+1	at		reserved
+2	v0		return value
+3	v1		return value
+4	a0		argument
+5	a1		argument
+6	a2		argument
+7	a3		argument
+8	t0		temp
+9	t1		temp
+10	t2		temp
+11	t3		temp
+12	t4		temp
+13	t5		temp
+14	t6		temp
+15	t7		temp
+16	s0		saved
+17	s1		saved
+18	s2		saved
+19	s3		saved
+20	s4		saved
+21	s5		saved
+22	s6		saved
+23	s7		saved
+24	s8		saved
+25	s9		saved
+26	k0		kernel
+27	k1		kernel
+28	gp		global pointer
+29	sp		stack pointer
+30	fp		frame pointer
+31	ra		return address
+
