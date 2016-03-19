@@ -1,0 +1,16 @@
+
+Meanings of the various control signals, since I forget easily...
+
+ExtOp - zero-extend the operand
+RegDst - normally write to register selected by rt.  When RegDst, use rd.
+RegWr - signal to write a register, otherwise no write
+MemWr - writing to memory, otherwise no write
+Mem2Reg - when high, memory goes into a register.  Otherwise, ALU output
+ALUsrc - Normally, ALU input comes from BusB.  When high, comes from a possibly-extended immediate in the instruction
+branch - a branch instruction
+jump - a jump instruction
+ALUctr - 6 bits used to select the ALU function
+
+rs - register select into BusA, usually used as an input to the ALU
+rt - register select into BusB, which can be 2nd input to ALU, or data written to memory
+
