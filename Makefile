@@ -1,6 +1,7 @@
 
 # PATH := /usr/local/mips/bin:$PATH
 
+CC := mips-linux-gnu-gcc
 AS := mips-linux-gnu-as
 LD := mips-linux-gnu-ld
 
