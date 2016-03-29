@@ -17,3 +17,6 @@ LD := mips-linux-gnu-ld
 %: %.o
 	mips-linux-gnu-ld -o $@ $<
 
+%.rom: %.ctl
+	./ctl2rom.pl $< > @$
+
