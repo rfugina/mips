@@ -7,15 +7,24 @@ main:
 	ori $t1, $t1, 0xf1
 	andi $t1, $t1, 0xf
 	lw $t3, mydata
+	ori $s1, $zero, 0x3f
+	j init
 
+test_move:
+	move $t1, $t2
 
+test_la:
+	la $t1, init
+
+test_li:
+	li $t1, 52
 	ori $s1, $zero, 0x3f
 
+test_nop:
+	nop
 
-
-
-
-	j init
+test_not:
+	not $s1, $s2
 
 .space 200
 
