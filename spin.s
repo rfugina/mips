@@ -1,5 +1,5 @@
 
-# .set noreorder
+.set noreorder
 
 setup:
 	li $t0, 0x400
