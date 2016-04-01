@@ -19,5 +19,5 @@ OBJDUMP := mips-linux-gnu-objdump
 	mips-linux-gnu-ld -o $@ $<
 
 %.rom: %.ctl
-	./ctl2rom.pl $< > @$
+	./ctl2rom.pl $< > $@
 
