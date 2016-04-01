@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
-use common::sense;
 use Data::Dumper;
+use strict;
 
 my $addr = 0;
 
