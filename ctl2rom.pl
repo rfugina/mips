@@ -3,6 +3,22 @@
 use Data::Dumper;
 use strict;
 
+my $aluops = {
+  '.'  => '000000',
+  and  => '000000',
+  or   => '000001',
+  xor  => '000010',
+  add  => '000011',
+  sub  => '000100',
+  sll  => '000101',
+  srl  => '000110',
+  sra  => '000111',
+  mult => '001000',
+  div  => '001001',
+  neg  => '001010',
+  nor  => '001011',
+  };
+
 my $addr = 0;
 
 {
@@ -23,32 +39,34 @@ while (<>)
 
   my @stuff = split(/\s+/, $_);
 
-  print Dumper(\@stuff);
-  exit;
-
   my ($d, $h, $b, $op,
     $aluop, $jump, $branch, $regdst, $regwr, $extop, $memwr, $mem2reg, $alusrc,
-    $junk) = @stuff;
+    $done, $junk) = @stuff;
 
-  $val &= 1 << 0 if $jump eq '1';
+  #print Dumper(\@stuff);
 
-  next LINE unless ($word);
+  die unless exists $aluops->{$aluop};
 
-  $loc = eval('0x' . $loc);
+  my $str = '0000000000000000';
 
-  my $i = 0;
+  # right of string is least significant digit...
+  substr($str, 15, 1) = '1' if $regdst == '1';
+  substr($str, 14, 1) = '1' if $regwr == '1';
+  substr($str, 13, 1) = '1' if $extop == '1';
+  substr($str, 12, 1) = '1' if $memwr == '1';
+  substr($str, 11, 1) = '1' if $mem2reg == '1';
+  substr($str, 10, 1) = '1' if $alusrc == '1';
+  substr($str, 9, 1) = '1' if $branch == '1';
+  substr($str, 8, 1) = '1' if $jump == '1';
 
-  while ($addr < $loc)
-  {
-    $i++;
-    $addr += 4;
-  }
+  substr($str, 2, 6) = substr('000000' . $aluops->{$aluop}, -6, 6); # left pad with zeros, keep 6 digits
 
-  printf "%s*0\n", $i if $i;
+  #substr($str, 1, 1) = '1' if $extop == '1';
+  substr($str, 0, 1) = '1' if $done == '1';
 
-  printf "%s\n", $word;
+  my $val = eval('0b' . $str);
 
-  $addr += 4;
+  printf "%04x\n", $val;
 }
 
 __END__
