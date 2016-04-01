@@ -4,12 +4,10 @@
 CC := mips-linux-gnu-gcc
 AS := mips-linux-gnu-as
 LD := mips-linux-gnu-ld
-
-#%.rom: %.o parse_objdump.pl
-#	mips-linux-gnu-objdump -d $< | ./parse_objdump.pl > $@
+OBJDUMP := mips-linux-gnu-objdump
 
 %.objdump: %.o
-	mips-linux-gnu-objdump -d $< > $@
+	$OBJDUMP -d $< > $@
 
 %.rom: %.objdump parse_objdump.pl
 	./parse_objdump.pl $< > $@
