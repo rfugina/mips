@@ -1,13 +1,16 @@
 
 # PATH := /usr/local/mips/bin:$PATH
 
-CC := mips-linux-gnu-gcc
-AS := mips-linux-gnu-as
+CC := mips-linux-gnu-gcc -msoft-float
+AS := mips-linux-gnu-as -msoft-float
 LD := mips-linux-gnu-ld
 OBJDUMP := mips-linux-gnu-objdump
 
+%.objdump: %
+	${OBJDUMP} -d $< > $@
+
 %.objdump: %.o
-	$OBJDUMP -d $< > $@
+	${OBJDUMP} -d $< > $@
 
 %.rom: %.objdump parse_objdump.pl
 	./parse_objdump.pl $< > $@
