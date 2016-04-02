@@ -1,9 +1,9 @@
 De He Bin    Opcode    ALUop jump branch RegDst RegWr ExtOp MemWr Mem2Reg ALUsrc
 De He Bin    Opcode    ALUop  J  B RD RW EO MW MR AS DONE
- 0 00 000000 sll       .      .  .  .  .  .  .  .  .  .
+ 0 00 000000 sll       sll    .  .  1  1  .  .  .  1  .
  1 01 000001 .         .      .  .  .  .  .  .  .  .  .
- 2 02 000010 srl       .      .  .  .  .  .  .  .  .  .
- 3 03 000011 sra       .      .  .  .  .  .  .  .  .  .
+ 2 02 000010 srl       srl    .  .  1  1  .  .  .  1  .
+ 3 03 000011 sra       sra    .  .  1  1  .  .  .  1  .
  4 04 000100 sllv      .      .  .  .  .  .  .  .  .  .
  5 05 000101 .         .      .  .  .  .  .  .  .  .  .
  6 06 000110 srlv      .      .  .  .  .  .  .  .  .  .
@@ -32,10 +32,10 @@ De He Bin    Opcode    ALUop  J  B RD RW EO MW MR AS DONE
 29 1D 011101 .         .      .  .  .  .  .  .  .  .  .
 30 1E 011110 .         .      .  .  .  .  .  .  .  .  .
 31 1F 011111 .         .      .  .  .  .  .  .  .  .  .
-32 20 100000 add       add    .  .  1  1  .  .  .  .  .
-33 21 100001 addu      add    .  .  1  1  .  .  .  .  .
-34 22 100010 sub       sub    .  .  1  1  .  .  .  .  .
-35 23 100011 subu      sub    .  .  .  .  .  .  .  .  .
+32 20 100000 add       add    .  .  1  1  .  .  .  1  1
+33 21 100001 addu      add    .  .  1  1  .  .  .  1  1
+34 22 100010 sub       sub    .  .  1  1  .  .  .  1  1
+35 23 100011 subu      sub    .  .  1  1  .  .  .  1  1
 36 24 100100 and       and    .  .  1  1  .  .  .  1  1
 37 25 100101 or        or     .  .  1  1  .  .  .  1  1
 38 26 100110 xor       xor    .  .  1  1  .  .  .  1  1
